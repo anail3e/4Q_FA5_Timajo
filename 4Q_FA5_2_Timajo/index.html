@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FA 5 Contacts List</title>
+</head>
+<body>
+<h1>Contacts List</h1>
+<input type="text" id="contactinput" placeholder="Enter name">
+<button onclick="addcontact()">Add</button>
+<button onclick="removecontact()">Remove</button>
+<div id="contacts"></div>
+
+<script>
+  var contacts = [];
+
+  function addcontact() {
+    var input = document.getElementById("contactinput").value.trim();
+    if (input !== "") {
+      contacts.push(input);
+      if (contacts.length > 7) {
+        contacts.shift();
+      }
+      display();
+    }
+  }
+
+  function removecontact() {
+    if (contacts.length > 0) {
+      contacts.pop();
+      display();
+    }
+  }
+
+  function display() {
+    var output = "<ul>";
+    for (var contact of contacts) {
+      output += "<li>" + contact + "</li>";
+    }
+    output += "</ul>";
+    document.getElementById("contacts").innerHTML = output;
+  }
+</script>
+</body>
+</html>
