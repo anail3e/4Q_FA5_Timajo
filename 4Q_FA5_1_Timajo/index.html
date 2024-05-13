@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FA 5</title>
+<script>
+  function num1(num) {
+    return !isNaN(num);
+  }
+
+  function promptnum() {
+    var input = prompt("Please enter a number:");
+    while (!num1(input)) {
+      input = prompt("Invalid input! Please enter a number:");
+    }
+    return parseInt(input);
+  }
+
+  function generateShape() {
+    var input = promptnum();
+    document.getElementById("input").textContent = "Number inputted: " + input;
+
+    document.getElementById("output").innerHTML = "";
+
+    if (input % 2 !== 0) {
+      //rectangle
+      for (var a = input; a >= 1; a--) {
+        var line = "";
+        for (var b = 1; b <= input; b++) {
+          line += a + " ";
+        }
+        document.getElementById("output").innerHTML += line + "<br>";
+      }
+      
+    } else {
+      //triangle
+      for (var a = input; a >= 1; a--) {
+        var line = "";
+        for (var b = 1; b <= a; b++) {
+          line += a + " ";
+        }
+        document.getElementById("output").innerHTML += line + "<br>";
+      }
+    }
+  }
+</script>
+</head>
+<body>
+<h1>Generate A Shape</h1>
+<button onclick="generateShape()">Input a number</button>
+<p id="input"></p>
+<p id="output"></p>
+</body>
+</html>
